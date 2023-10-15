@@ -11,13 +11,20 @@ fn main() {
             .expect("Failed to read line.");
 
         let input = input.trim().to_lowercase();
+        if input.contains('q') {
+            break;
+        }
+
         let temp: String = input
             .chars()
             .filter(|c| c.is_digit(10) || *c == '-' || *c == '.')
             .collect();
         let temp: f64 = match temp.parse() {
             Ok(num) => num,
-            Err(_) => break,
+            Err(_) => { 
+                println!("Please input a valid temperature.");
+                continue;            
+            },
         };
 
         if input.contains('c') {
@@ -25,7 +32,7 @@ fn main() {
         } else if input.contains('f') {
             println!("{:.2}°C", fahrenheit_to_celsius(temp));
         } else {
-            println!("Please add the scale to your value.");
+            println!("Please input a valid temperature.");
         }
     }
 }
