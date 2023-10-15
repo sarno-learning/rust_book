@@ -22,8 +22,10 @@ fn main() {
 
         if input.contains('c') {
             println!("{:.2}°F", celsius_to_fahrenheit(temp));
-        } else {
+        } else if input.contains('f') {
             println!("{:.2}°C", fahrenheit_to_celsius(temp));
+        } else {
+            println!("Please add the scale to your value.");
         }
     }
 }
